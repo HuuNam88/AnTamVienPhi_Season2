@@ -265,7 +265,7 @@ function renderS1(){
 /* ============================ BỒI THƯỜNG — theo dõi tổng thể ============================ */
 function renderClaims(){
   const box = $('claims'), C = S.clm;
-  if (!C.length){ box.innerHTML = '<h2 class="font-bold">Theo dõi bồi thường (tổng thể)</h2><p class="text-sm text-slate-500 mt-2">Chưa đọc được dữ liệu bồi thường.</p>'; return; }
+  if (!C.length){ box.innerHTML = '<h2 class="font-bold">Bồi thường</h2><p class="text-sm text-slate-500 mt-2">Chưa đọc được dữ liệu bồi thường.</p>'; return; }
   const net = sumRev(() => true, '0000-01-01', '9999-12-31'), cl = C.reduce((s, r) => s + r.paid, 0), lr = net > 0 ? cl / net * 100 : null;
   const cls = lr == null ? 'bg-slate-100 text-slate-500' : lr > CFG.lrCap ? 'bg-rose-100 text-rose-700' : lr >= CFG.lrWarn ? 'bg-amber-100 text-amber-700' : 'bg-emerald-100 text-emerald-700';
   const txt = lr == null ? 'n/a' : lr > CFG.lrCap ? 'Vượt trần 2%' : lr >= CFG.lrWarn ? 'Cảnh báo ≥ 1,5%' : 'An toàn';
@@ -292,15 +292,15 @@ function renderClaims(){
       if (av > 0 && cur > CFG.spikeX * av) spk.push(`Đơn cấp tháng ${k.slice(5)}/${k.slice(0, 4)}: tỷ lệ bồi thường gấp ${(cur / av).toFixed(1).replace('.', ',')} lần trung bình ${prev.length} tháng cấp đơn trước.`); } });
   flags.push(...spk.slice(-2));
   const avg = cl / C.length, cov = (C.length - un) / C.length * 100;
-  box.innerHTML = `<div class="flex items-start justify-between gap-2"><div><h2 class="font-bold">Theo dõi bồi thường (tổng thể)</h2><p class="text-xs text-slate-500">Bồi thường đã trả / Doanh thu thuần · Season theo ngày cấp đơn của số đơn · ngưỡng vàng 1,5% · đỏ > 2%</p></div><span class="text-xs font-semibold px-3 py-1 rounded-full ${cls}">${txt}</span></div>
-    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mt-3">${mini('Lũy kế toàn chương trình', fP(lr, 2), `${fN(cl)} đ / ${fT(net)}`)}
+  box.innerHTML = `<div class="flex items-start justify-between gap-2"><div><h2 class="font-bold">Theo dõi bồi thường (tổng thể)</h2><p class="text-xs text-slate-500">Bồi thường / Doanh thu · Season theo ngày cấp đơn của số đơn · LR ngưỡng vàng từ 1,5% · LR ngưỡng đỏ > 2%</p></div><span class="text-xs font-semibold px-3 py-1 rounded-full ${cls}">${txt}</span></div>
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mt-3">${mini('Lũy kế toàn CT', fP(lr, 2), `${fN(cl)} đ / ${fT(net)}`)}
     ${mini('Season 1', fP(lr1, 2), `${fN(n1)} hồ sơ · ${fN(c1)} đ`)}
     ${mini('Season 2', S.cut ? fP(lr2, 2) : 'chưa bắt đầu', S.cut ? `${fN(n2)} hồ sơ · ${fN(c2)} đ` : '')}
     ${mini('Số hồ sơ', fN(C.length), `BQ ${fN(avg)} đ/hồ sơ`)}
     ${mini('Đối chiếu số đơn', fP(cov, 0), un ? `${fN(un)} hồ sơ chưa khớp` : 'khớp 100%')}</div>
-    ${un ? `<div class="mt-2 text-xs text-amber-700">⚠ ${fN(un)}/${fN(C.length)} hồ sơ chưa đối chiếu được số đơn nên chưa tính vào Season nào${ex.length ? ' (ví dụ: ' + ex.join(', ') + ')' : ''} — kiểm tra policy_number có cùng định dạng với "Số đơn" không.</div>` : ''}
+    ${un ? `<div class="mt-2 text-xs text-amber-700">⚠ ${fN(un)}/${fN(C.length)} hồ sơ chưa đối chiếu được số đơn nên chưa tính vào Season nào${ex.length ? ' (ví dụ: ' + ex.join(', ') + ')' : ''} — kiểm tra policy_number tại dữ liệu bồi thường với "Số đơn".</div>` : ''}
     <div class="mt-3 text-sm">${flags.length ? '<div class="font-semibold text-rose-600 mb-1">⚠ Dấu hiệu bất thường</div>' + flags.map(t => `<div class="text-xs text-slate-700">• ${t}</div>`).join('') : '<div class="text-xs text-emerald-700">Không có dấu hiệu bất thường theo các cờ đang cài.</div>'}</div>
-    <p class="text-[11px] text-slate-400 mt-2">3–6 tháng đầu tỷ lệ thường thấp do độ trễ báo cáo (IBNR) — chưa nên coi là kết luận.</p>`;
+    <p class="text-[11px] text-slate-400 mt-2">Ghi chú: Số liệu bồi thường cập nhật hàng tháng.</p>`;
 }
 
 /* ============================ TẢI DỮ LIỆU ============================ */
