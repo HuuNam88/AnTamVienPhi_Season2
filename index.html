@@ -19,12 +19,12 @@
 <header class="sticky top-0 z-20 bg-white/80 backdrop-blur border-b border-slate-200/80">
   <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-end gap-3">
     <div class="mr-auto">
-      <div class="text-[11px] font-bold tracking-widest text-teal-700 uppercase">Ban Bancassurance · PJICO</div>
-      <h1 class="text-lg font-bold leading-tight">An tâm viện phí — theo dõi doanh thu 3 kênh</h1>
+      <div class="text-[11px] font-bold tracking-widest text-teal-700 uppercase">Ban Bảo Hiểm Sức Khỏe · PJICO</div>
+      <h1 class="text-lg font-bold leading-tight">An Tâm Viện Phí · PJICO - FEC</h1>
     </div>
-    <label class="text-xs text-slate-500">Kỳ xu hướng<select id="g" class="sel block"><option value="d">Ngày</option><option value="m">Tháng</option><option value="q">Quý</option></select></label>
+    <label class="text-xs text-slate-500">Kỳ<select id="g" class="sel block"><option value="d">Ngày</option><option value="m">Tháng</option><option value="q">Quý</option></select></label>
     <label class="text-xs text-slate-500">Sản phẩm<select id="sp" class="sel block"><option value="all">Tất cả</option><option>An tâm viện phí</option><option>An tâm viện phí Gia đình</option></select></label>
-    <label class="text-xs text-slate-500">Kênh (xu hướng & phòng)<select id="kenh" class="sel block"><option value="all">Tất cả</option><option>PJICO - FE - IDL</option><option>PJICO - IDL</option><option>PJICO - IDL - 3P</option></select></label>
+    <label class="text-xs text-slate-500">Kênh<select id="kenh" class="sel block"><option value="all">Tất cả</option><option>PJICO - FE - IDL</option><option>PJICO - IDL</option><option>PJICO - IDL - 3P</option></select></label>
     <span id="badge" class="text-xs font-semibold px-3 py-2 rounded-full bg-slate-100 text-slate-600">Đang tải…</span>
     <button id="refresh" class="text-sm font-semibold text-white bg-slate-800 hover:bg-slate-700 rounded-xl px-4 py-2">↻ Cập nhật</button>
   </div>
@@ -43,7 +43,7 @@
   </section>
 
   <section class="grid lg:grid-cols-2 gap-4">
-    <div class="card"><h2 class="font-bold">Ma trận Sản phẩm × Kênh</h2><p class="text-xs text-slate-500 mb-3">Doanh thu Season 2, tỷ trọng, hợp đồng, phí bình quân</p><div id="matrix" class="overflow-x-auto"></div></div>
+    <div class="card"><h2 class="font-bold">Sản phẩm × Kênh</h2><p class="text-xs text-slate-500 mb-3">Doanh thu Season 2, tỷ trọng, hợp đồng, phí bình quân</p><div id="matrix" class="overflow-x-auto"></div></div>
     <div class="card"><h2 class="font-bold">Đơn vị / Phòng</h2><p id="deptSub" class="text-xs text-slate-500 mb-3"></p><div id="dept" class="overflow-x-auto max-h-80"></div></div>
   </section>
 
