@@ -297,7 +297,7 @@ function renderWaterfall(){
   const ymin = Math.max(0, Math.floor(Math.min(...lvl) * 0.75 / 1e7) * 10); // triệu đồng
   mk('cWf', {type: 'bar', data: {labels, datasets: [{data, backgroundColor: col, borderRadius: 3, maxBarThickness: 48}]},
     options: {responsive: true, maintainAspectRatio: false, plugins: {legend: {display: false}, tooltip: {callbacks: {label: c => { const v = vals[c.dataIndex], tot = c.dataIndex === 0 || c.dataIndex === vals.length - 1; return tot ? fTr(v) : (v >= 0 ? '+' : '') + fTr(v); }}}},
-      scales: {x: {grid: {display: false}, ticks: {font: {size: 10}, maxRotation: 40}}, y: {min: ymin, title: {display: true, text: 'Triệu đồng (trục không bắt đầu từ 0)'}}}}});
+      scales: {x: {grid: {display: false}, ticks: {font: {size: 10}, maxRotation: 40}}, y: {min: ymin, title: {display: true, text: 'Triệu đồng'}}}}});
 }
 
 /* ============================ DỰ PHÓNG: về đích KPI (A) + doanh thu tháng (B1) ============================ */
@@ -355,7 +355,7 @@ function renderClaims(){
       if (av > 0 && cur > CFG.spikeX * av) spk.push(`Đơn cấp tháng ${k.slice(5)}/${k.slice(0, 4)}: tỷ lệ bồi thường gấp ${(cur / av).toFixed(1).replace('.', ',')} lần trung bình ${prev.length} tháng cấp đơn trước.`); } });
   flags.push(...spk.slice(-2));
   const avg = cl / C.length, cov = (C.length - un) / C.length * 100;
-  box.innerHTML = `<div class="flex items-start justify-between gap-2"><div><h2 class="font-bold">Theo dõi bồi thường (tổng thể)</h2><p class="text-xs text-slate-500">Bồi thường đã trả / Doanh thu thuần · Season theo ngày cấp đơn của số đơn · ngưỡng vàng 1,5% · đỏ > 2%</p></div><span class="text-xs font-semibold px-3 py-1 rounded-full ${cls}">${txt}</span></div>
+  box.innerHTML = `<div class="flex items-start justify-between gap-2"><div><h2 class="font-bold">Tổng hợp Bồi thường</h2><p class="text-xs text-slate-500">Bồi thường đã trả / Doanh thu thuần · Season theo ngày cấp đơn của số đơn · ngưỡng vàng 1,5% · đỏ > 2%</p></div><span class="text-xs font-semibold px-3 py-1 rounded-full ${cls}">${txt}</span></div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-3">${mini('Lũy kế toàn chương trình', fP(lr, 2), `${fN(cl)} đ / ${fT(net)}`)}
     ${mini('Season 1', fP(lr1, 2), `${fN(n1)} hồ sơ · ${fN(c1)} đ`)}
     ${mini('Season 2', rev2 > 0 ? fP(lr2, 2) : 'chưa bắt đầu', rev2 > 0 ? `${fN(n2)} hồ sơ · ${fN(c2)} đ` : '')}
