@@ -174,7 +174,7 @@ function render(){
   const cann = el >= 7 ? `Nhịp Kênh 1: 30 ngày trước Season 2 = ${fTr(bef)}/ngày → từ Season 2 = ${fTr(aft)}/ngày (${dlt == null ? 'n/a' : (dlt > 0 ? '+' : '') + fP(dlt)}).` : 'Đối chiếu nhịp trước/sau Season 2 (kênh 2, 3 có ăn vào kênh 1 không) sẽ hiện khi đủ 7 ngày dữ liệu.';
   $('hero').innerHTML = !S.cut ? s1Pending() : `
     <div class="card">
-      <div class="flex items-start justify-between gap-2"><div><h2 class="font-bold">Season 2 · KPI Kênh ${f1}: ${fT(kpi)}</h2><p class="text-xs text-slate-500">${fmtD(CFG.start)} – ${fmtD(CFG.end)} (${TOTAL} ngày) · doanh thu ròng, cả 2 sản phẩm</p></div><span class="text-xs font-semibold px-3 py-1 rounded-full ${rc}">${rt}</span></div>
+      <div class="flex items-start justify-between gap-2"><div><h2 class="font-bold">Season 2 · KPI Kênh ${f1}: ${fT(kpi)}</h2><p class="text-xs text-slate-500">${fmtD(CFG.start)} – ${fmtD(CFG.end)} (${TOTAL} ngày)</p></div><span class="text-xs font-semibold px-3 py-1 rounded-full ${rc}">${rt}</span></div>
       <div class="mt-4 h-5 rounded-full bg-slate-200 overflow-hidden relative"><div class="h-full bg-gradient-to-r from-teal-700 to-blue-800" style="width:${Math.min(100, act / kpi * 100)}%"></div>
         <div class="absolute top-0 h-full w-0.5 bg-amber-500" style="left:${el / TOTAL * 100}%" title="Kế hoạch tuyến tính"></div></div>
       <div class="flex justify-between text-xs text-slate-500 mt-1"><span>${fT(act)} đã đạt (${fP(act / kpi * 100)})</span><span>Vạch cam: ${fP(el / TOTAL * 100)} thời gian đã qua</span></div>
